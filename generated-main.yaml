@@ -1,0 +1,4 @@
+generator: main
+parameters:
+  repoBaseUrl: github.com/eurofurence
+  serviceName: reg-backend-template-test
