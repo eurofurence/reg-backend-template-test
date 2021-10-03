@@ -1,4 +1,7 @@
 generator: main
 parameters:
+  maintainerEmail: jsquirrel_github_9a6d@packetloss.de
   repoBaseUrl: github.com/eurofurence
+  reviewers:
+  - Jumpy-Squirrel
   serviceName: reg-backend-template-test
