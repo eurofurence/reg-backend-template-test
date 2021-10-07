@@ -13,6 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(logformat.Logformat("ERROR", "00000000", fmt.Sprintf("Error while loading configuration: %v", err)))
 	}
+	log.Println(logformat.Logformat("INFO", "00000000", "Initializing..."))
 	server := web.Create()
 	web.Serve(server)
 }
