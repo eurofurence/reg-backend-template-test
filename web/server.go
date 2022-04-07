@@ -7,7 +7,7 @@ import (
 	"github.com/eurofurence/reg-backend-template-test/web/filter/corsfilter"
 	"github.com/eurofurence/reg-backend-template-test/web/filter/logreqid"
 	"github.com/eurofurence/reg-backend-template-test/web/filter/reqid"
-	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/v5"
 	"net/http"
 )
 

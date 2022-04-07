@@ -7,7 +7,7 @@ import (
 	"github.com/eurofurence/reg-backend-template-test/api/v1/health"
 	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging"
 	"github.com/eurofurence/reg-backend-template-test/web/util/media"
-	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/v5"
 	"github.com/go-http-utils/headers"
 	"net/http"
 )
