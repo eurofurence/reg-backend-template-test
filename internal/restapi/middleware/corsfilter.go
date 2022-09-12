@@ -1,17 +1,20 @@
-package corsfilter
+package middleware
 
 import (
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/config"
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging"
 	"github.com/go-http-utils/headers"
+
+	"github.com/eurofurence/reg-backend-template-test/internal/config"
+	"github.com/eurofurence/reg-backend-template-test/internal/logging"
+
 	"net/http"
 )
 
-func createCorsHeadersHandler(next http.Handler) func(w http.ResponseWriter, r *http.Request) {
+func createCorsHeadersHandler(next http.Handler, config *config.Application) func(w http.ResponseWriter, r *http.Request) {
 	handlerFunc := func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
 
-		if config.IsCorsDisabled() {
+		// Example for cors middleware
+		if config != nil && config.IsCorsDisabled {
 			logging.Ctx(ctx).Warn("sending headers to disable CORS. This configuration is not intended for production use, only for local development!")
 			w.Header().Set(headers.AccessControlAllowOrigin, "*")
 			w.Header().Set(headers.AccessControlAllowMethods, "POST, GET, OPTIONS, PUT, DELETE")
@@ -34,7 +37,7 @@ func createCorsHeadersHandler(next http.Handler) func(w http.ResponseWriter, r *
 
 func CorsHeadersMiddleware() func(http.Handler) http.Handler {
 	middlewareCreator := func(next http.Handler) http.Handler {
-		return http.HandlerFunc(createCorsHeadersHandler(next))
+		return http.HandlerFunc(createCorsHeadersHandler(next, nil))
 	}
 	return middlewareCreator
 }

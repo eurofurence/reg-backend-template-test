@@ -1,15 +1,16 @@
-package logreqid
+package middleware
 
 import (
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging"
-	"github.com/eurofurence/reg-backend-template-test/web/filter/reqid"
+	"github.com/eurofurence/reg-backend-template-test/internal/logging"
+
 	"net/http"
 )
 
 func logRequestIdHandler(next http.Handler) func(w http.ResponseWriter, r *http.Request) {
 	handlerFunc := func(w http.ResponseWriter, r *http.Request) {
+		// example to log a request id
 		ctx := r.Context()
-		newCtx := logging.CreateContextWithLoggerForRequestId(ctx, reqid.GetRequestID(ctx))
+		newCtx := logging.CreateContextWithLoggerForRequestId(ctx, GetRequestID(ctx))
 		r = r.WithContext(newCtx)
 
 		next.ServeHTTP(w, r)

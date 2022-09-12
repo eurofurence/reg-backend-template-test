@@ -2,7 +2,7 @@ package logging
 
 import (
 	"context"
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging/consolelogging"
+	"github.com/eurofurence/reg-backend-template-test/internal/logging/consolelogging"
 )
 
 type Logger interface {

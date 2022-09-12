@@ -1,7 +1,7 @@
 package consolelogging
 
 import (
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging/consolelogging/logformat"
+	"github.com/eurofurence/reg-backend-template-test/internal/logging/consolelogging/logformat"
 	"log"
 	"os"
 )

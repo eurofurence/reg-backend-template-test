@@ -1,15 +1,15 @@
-package healthctl
+package v1health
 
 import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/eurofurence/reg-backend-template-test/api/v1/health"
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging"
-	"github.com/eurofurence/reg-backend-template-test/web/util/media"
+	"net/http"
+
+	"github.com/eurofurence/reg-backend-template-test/internal/logging"
+	"github.com/eurofurence/reg-backend-template-test/internal/restapi/media"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-http-utils/headers"
-	"net/http"
 )
 
 func Create(server chi.Router) {
@@ -19,7 +19,7 @@ func Create(server chi.Router) {
 func healthGet(w http.ResponseWriter, r *http.Request) {
 	logging.Ctx(r.Context()).Info("health")
 
-	dto := health.HealthResultDto{Status: "up"}
+	dto := HealthResultDto{Status: "up"}
 
 	w.Header().Add(headers.ContentType, media.ContentTypeApplicationJson)
 	w.WriteHeader(http.StatusOK)
