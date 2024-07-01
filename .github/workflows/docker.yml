@@ -1,0 +1,67 @@
+name: Create and publish Docker image
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build-and-push-docker-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Print debugging information
+        run: >
+          echo registry="$REGISTRY" &&
+          echo image-name="$IMAGE_NAME" &&
+          echo image-tags="$IMAGE_TAGS" &&
+          echo full-repo-url="$FULL_REPO_URL" &&
+          echo branch-or-tag-name="$BRANCH_OR_TAG_NAME" &&
+          echo commit-hash="$COMMIT_HASH" &&
+          echo registry-user="$REGISTRY_USER"
+        shell: bash
+        env:
+          REGISTRY: ghcr.io
+          IMAGE_NAME: ${{ github.repository }}
+          IMAGE_TAGS: latest
+          FULL_REPO_URL: https://github.com/${{ github.repository }}
+          BRANCH_OR_TAG_NAME: ${{ github.ref_name }}
+          COMMIT_HASH: ${{ github.sha }}
+          REGISTRY_USER: ${{ github.actor }}
+
+      - name: Checkout repository
+        run: 'git clone -b "$BRANCH_OR_TAG_NAME" --depth 1 "$REPO_URL_WITH_AUTH" app'
+        shell: bash
+        env:
+          REPO_URL_WITH_AUTH: https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          BRANCH_OR_TAG_NAME: ${{ github.ref_name }}
+
+      - name: Log in to the Container registry
+        run: 'echo "$REGISTRY_PASS" | docker login "$REGISTRY" -u "$REGISTRY_USER" --password-stdin'
+        shell: bash
+        env:
+          REGISTRY: ghcr.io
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_PASS: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker build and push image
+        run: >
+          cd app &&
+          TAG_ARGS=$(echo -n "$IMAGE_TAGS" | sed -r "s_([^ :/]+)_ --tag $REGISTRY/${IMAGE_NAME,,}:\1 _g") &&
+          docker build 
+          --label org.opencontainers.image.url="$FULL_REPO_URL"
+          --label org.opencontainers.image.revision="$COMMIT_HASH"
+          $TAG_ARGS
+          --pull
+          -f Dockerfile
+          . &&
+          docker push -a "$REGISTRY/${IMAGE_NAME,,}"
+        shell: bash
+        env:
+          REGISTRY: ghcr.io
+          IMAGE_NAME: ${{ github.repository }}
+          IMAGE_TAGS: latest
+          FULL_REPO_URL: https://github.com/${{ github.repository }}
+          COMMIT_HASH: ${{ github.sha }}

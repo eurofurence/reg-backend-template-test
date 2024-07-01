@@ -1,0 +1,4 @@
+# set required config for acceptance tests
+
+# FIELD: "value"
+OIDC_ALLOWED_AUDIENCES: "14d9f37a-1eec-47c9-a949-5f1ebdf9c8e5"

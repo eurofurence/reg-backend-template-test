@@ -1,0 +1,7 @@
+# copy this file to ../local-config.yaml to avoid having to set environment variables
+# when running locally.
+
+# SERVER_ADDRESS: "0.0.0.0"
+SERVER_PORT: "8080"
+LOG_LEVEL: "INFO"
+LOG_STYLE: "plain"

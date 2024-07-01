@@ -1,6 +1,7 @@
 .idea/**
+.vscode/**
+api/generator/openapi-generator-cli-*.jar
 *.exe
+/local-config.yaml
 main
 reg-backend-template-test
-**/*.swp
-config.yaml

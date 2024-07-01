@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: reg-backend-template-test
+  description: |-
+    This backend microservice is a template.
+  license:
+    name: MIT
+    url: https://github.com/eurofurence/reg-backend-template-test/blob/main/LICENSE
+  version: 0.1.0
+tags:
+  - name: info
+    description: health and other public status information
+  - name: example
+    description: example stuff
+paths:
+  /:
+    get:
+      tags:
+        - info
+      summary: health
+      description: The health check for this service.
+      operationId: health
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /api/rest/v1/example:
+    get:
+      tags:
+        - example
+      summary: example
+      description: Get the next example value.
+      operationId: GetExample
+      parameters:
+        - name: min_value
+          in: query
+          description: only get example values that are above the threshold, if specified
+          required: false
+          schema:
+            type: number
+            example: 14
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Example'
+        '400':
+          description: Invalid parameter. min_value must be a valid integer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Value outside acceptable range
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+  /api/rest/v1/example/{category}:
+    post:
+      tags:
+        - example
+      summary: example
+      description: Set the example value. This is of course a silly example.
+      operationId: SetExample
+      parameters:
+        - name: category
+          in: path
+          description: a category to set the value for
+          required: true
+          schema:
+            type: string
+            example: squirrels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Example'
+      responses:
+        '204':
+          description: successful operation
+        '400':
+          description: Invalid request body or path parameter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+        - message
+        - timestamp
+        - requestid
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: The time at which the error occurred.
+          example: 2006-01-02T15:04:05+07:00
+        requestid:
+          type: string
+          description: An internal trace id assigned to the error. Used to find logs associated with errors across our services. Display to the user as something to communicate to us with inquiries about the error.
+          example: a8b7c6d5
+        message:
+          type: string
+          description: |-
+            A keyed description of the error. Intentionally made machine readable to provide fairly fine grained
+            error classification. Also useful to get meaningful errors in internationalized UI client.
+            
+            At this time, there are these values:
+            - auth.unauthorized (token missing completely or invalid)
+            - auth.forbidden (permissions missing)
+            - request.parse.failed
+            - value.too.high (an example of a business logic exception)
+            - value.too.low (another example of a business logic exception)
+            - error.internal
+            - error.unknown
+          example: auth.unauthorized
+        details:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          description: Optional additional details about the error. If available, will usually contain English language technobabble.
+          example:
+            name:
+              - the name cannot be longer than 80 characters
+            other:
+              - you need to refill the flux capacitor before the operation can succeed
+    Example:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: integer
+          format: int64
+          description: A random example value that is generated by the business logic.
+          example: 12648
+    Health:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          description: the status of this service. If you get a response at all, status will be "OK".
+          example: OK
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: A bearer or session token obtained from your OpenID Connect Identity Provider.
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: A shared secret used for local communication (also useful for local development)
