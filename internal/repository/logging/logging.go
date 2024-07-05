@@ -2,12 +2,12 @@ package logging
 
 import (
 	"fmt"
-	"github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	"github.com/Roshick/go-autumn-slog/pkg/level"
 	auslog "github.com/Roshick/go-autumn-slog/pkg/logging"
 	auconfigapi "github.com/StephanHCB/go-autumn-config-api"
 	auconfigenv "github.com/StephanHCB/go-autumn-config-env"
 	aulogging "github.com/StephanHCB/go-autumn-logging"
+	"github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	"log/slog"
 	"os"
 )
@@ -41,7 +41,7 @@ func Setup() error {
 
 	switch style {
 	case LogStylePlain:
-		lvl, err := level.ParseLogLevel(auconfigenv.Get(ConfLogLevel))
+		lvl, err := level.ParseLogLevel(auconfigenv.Get(auslog.DefaultConfigKeyLevel))
 		if err != nil {
 			return err
 		}
@@ -59,45 +59,19 @@ func Setup() error {
 }
 
 const (
-	ConfLogStyle                = "LOG_STYLE"
-	ConfLogLevel                = "LOG_LEVEL"
-	ConfLogTimeTransformer      = "LOG_TIME_TRANSFORMER"
-	ConfLogAttributeKeyMappings = "LOG_ATTRIBUTE_KEY_MAPPINGS"
+	ConfLogStyle = "LOG_STYLE"
 )
 
-const ECSMapping = `{
-  "time": "@timestamp",
-  "level": "log.level",
-  "msg": "message",
-  "error": "error.message"
-}`
-
 func ConfigItems() []auconfigapi.ConfigItem {
-	return []auconfigapi.ConfigItem{
-		{
+	return append(
+		auslog.NewConfig().ConfigItems(),
+		auconfigapi.ConfigItem{
 			Key:         ConfLogStyle,
 			Default:     "json",
 			Description: "log style, defaults to json if not set",
 			Validate:    auconfigapi.ConfigNeedsNoValidation, // validated by logging initialize
-		}, {
-			Key:     ConfLogLevel,
-			Default: "INFO",
-			Description: "Minimum level of all logs. \n" +
-				"Supported values: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, PANIC, SILENT",
-			Validate: auconfigapi.ConfigNeedsNoValidation, // validated by logging initialize
-		}, {
-			Key:         ConfLogTimeTransformer,
-			Default:     "UTC",
-			Description: "Type of transformation applied to each record's timestamp. Useful for testing purposes. Supported values: UTC, ZERO",
-			Validate:    auconfigapi.ConfigNeedsNoValidation, // validated by logging initialize
-		}, {
-			Key:     ConfLogAttributeKeyMappings,
-			Default: ECSMapping,
-			Description: "Mappings for attribute keys of all logs. " +
-				"Example: The entry [error: error.message] maps every attribute with key \"error\" to use the key \"error.message\" instead.",
-			Validate: auconfigapi.ConfigNeedsNoValidation, // validated by logging initialize
 		},
-	}
+	)
 }
 
 func obtainDefaultValue(key string) string {
