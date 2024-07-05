@@ -1,5 +1,5 @@
-github.com/Roshick/go-autumn-slog v0.2.2 h1:6qbGhzyWgdmBVXh0mTr39pjNAkPL9MthKNq1l/LB/F0=
-github.com/Roshick/go-autumn-slog v0.2.2/go.mod h1:x9SmGQMayVv2y8MG2xZe5VImvm2qiP5N4BEOj1z68s4=
+github.com/Roshick/go-autumn-slog v0.3.0 h1:OCkBxWmc5IErdbVRwI7/GmyjmipRd5ClvZpwRXH1T+o=
+github.com/Roshick/go-autumn-slog v0.3.0/go.mod h1:GdcmVwOMxjEOj01o4JdS27EE0UJv67iSQsvhmr9wTPY=
 github.com/StephanHCB/go-autumn-config-api v0.2.1 h1:t2EeTsdFpLM2xH2T7QFQtbFYI8hG5I9S+Q2o3KT6mlk=
 github.com/StephanHCB/go-autumn-config-api v0.2.1/go.mod h1:6nJBwuT1uURHApOSFr6Rw+naK2YkO+sAduwEWZ0qsSU=
 github.com/StephanHCB/go-autumn-config-env v0.2.2 h1:DWal2O4gKlNsrKnq8V5nRNUevqkH2+xGT/BwCyqrV3I=
