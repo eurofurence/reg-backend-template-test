@@ -3,7 +3,7 @@ module github.com/eurofurence/reg-backend-template-test
 go 1.22.2
 
 require (
-	github.com/Roshick/go-autumn-slog v0.2.2
+	github.com/Roshick/go-autumn-slog v0.3.0
 	github.com/StephanHCB/go-autumn-config-api v0.2.1
 	github.com/StephanHCB/go-autumn-config-env v0.2.2
 	github.com/StephanHCB/go-autumn-logging v0.3.0
