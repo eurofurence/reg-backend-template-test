@@ -1,7 +1,8 @@
 github.com/Roshick/go-autumn-slog v0.3.0 h1:OCkBxWmc5IErdbVRwI7/GmyjmipRd5ClvZpwRXH1T+o=
 github.com/Roshick/go-autumn-slog v0.3.0/go.mod h1:GdcmVwOMxjEOj01o4JdS27EE0UJv67iSQsvhmr9wTPY=
-github.com/StephanHCB/go-autumn-config-api v0.2.1 h1:t2EeTsdFpLM2xH2T7QFQtbFYI8hG5I9S+Q2o3KT6mlk=
 github.com/StephanHCB/go-autumn-config-api v0.2.1/go.mod h1:6nJBwuT1uURHApOSFr6Rw+naK2YkO+sAduwEWZ0qsSU=
+github.com/StephanHCB/go-autumn-config-api v0.2.2 h1:A+DO0JT0dc/4e/UN6XwYCE7VNCXHL5Xlg8UrAqTbNXE=
+github.com/StephanHCB/go-autumn-config-api v0.2.2/go.mod h1:6nJBwuT1uURHApOSFr6Rw+naK2YkO+sAduwEWZ0qsSU=
 github.com/StephanHCB/go-autumn-config-env v0.2.2 h1:DWal2O4gKlNsrKnq8V5nRNUevqkH2+xGT/BwCyqrV3I=
 github.com/StephanHCB/go-autumn-config-env v0.2.2/go.mod h1:aTwlB8AVSnqGt4537uVHtZs9/3NEFYQwuVTRaNutgwg=
 github.com/StephanHCB/go-autumn-logging v0.3.0 h1:G0zs8xoth8i8mOeoFgG3Dvk6dIY9dPPJ7wkm6mjaPyY=
