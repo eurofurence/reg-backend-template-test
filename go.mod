@@ -6,8 +6,8 @@ require (
 	github.com/Roshick/go-autumn-slog v0.3.0
 	github.com/StephanHCB/go-autumn-config-api v0.2.1
 	github.com/StephanHCB/go-autumn-config-env v0.2.2
-	github.com/StephanHCB/go-autumn-logging v0.3.0
-	github.com/StephanHCB/go-autumn-restclient v0.8.0
+	github.com/StephanHCB/go-autumn-logging v0.4.0
+	github.com/StephanHCB/go-autumn-restclient v0.8.1
 	github.com/StephanHCB/go-autumn-restclient-circuitbreaker v0.4.1
 	github.com/StephanHCB/go-autumn-restclient-circuitbreaker-prometheus v0.1.0
 	github.com/StephanHCB/go-autumn-restclient-prometheus v0.1.2
