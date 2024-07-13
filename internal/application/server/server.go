@@ -2,11 +2,11 @@ package server
 
 import (
 	"context"
-	"github.com/eurofurence/reg-backend-template-test/internal/application/middleware"
-	"github.com/eurofurence/reg-backend-template-test/internal/repository/idp"
 	auconfigapi "github.com/StephanHCB/go-autumn-config-api"
 	auconfigenv "github.com/StephanHCB/go-autumn-config-env"
 	aulogging "github.com/StephanHCB/go-autumn-logging"
+	"github.com/eurofurence/reg-backend-template-test/internal/application/middleware"
+	"github.com/eurofurence/reg-backend-template-test/internal/repository/idp"
 	"github.com/go-chi/chi/v5"
 	"net/http"
 	"time"

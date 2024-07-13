@@ -3,8 +3,8 @@ package web
 import (
 	"context"
 	"encoding/json"
-	"github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	aulogging "github.com/StephanHCB/go-autumn-logging"
+	"github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	"github.com/pkg/errors"
 	"net/http"
 	"net/url"

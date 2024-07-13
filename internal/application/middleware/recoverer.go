@@ -1,9 +1,9 @@
 package middleware
 
 import (
+	aulogging "github.com/StephanHCB/go-autumn-logging"
 	"github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	"github.com/eurofurence/reg-backend-template-test/internal/application/web"
-	aulogging "github.com/StephanHCB/go-autumn-logging"
 	"net/http"
 	"runtime/debug"
 )

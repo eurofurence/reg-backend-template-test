@@ -2,8 +2,8 @@ package example
 
 import (
 	"context"
-	apierrors "github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	aulogging "github.com/StephanHCB/go-autumn-logging"
+	apierrors "github.com/eurofurence/reg-backend-template-test/internal/application/common"
 	"net/url"
 )
 

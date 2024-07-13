@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	aulogging "github.com/StephanHCB/go-autumn-logging"
 	"github.com/eurofurence/reg-backend-template-test/internal/application/server"
 	"github.com/eurofurence/reg-backend-template-test/internal/controller/examplectl"
 	"github.com/eurofurence/reg-backend-template-test/internal/controller/infoctl"
@@ -10,7 +11,6 @@ import (
 	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging"
 	"github.com/eurofurence/reg-backend-template-test/internal/repository/vault"
 	"github.com/eurofurence/reg-backend-template-test/internal/service/example"
-	aulogging "github.com/StephanHCB/go-autumn-logging"
 	"github.com/go-chi/chi/v5"
 )
 

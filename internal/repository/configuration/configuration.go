@@ -1,14 +1,14 @@
 package configuration
 
 import (
+	auconfigapi "github.com/StephanHCB/go-autumn-config-api"
+	auconfigenv "github.com/StephanHCB/go-autumn-config-env"
+	aulogging "github.com/StephanHCB/go-autumn-logging"
 	"github.com/eurofurence/reg-backend-template-test/internal/application/middleware"
 	"github.com/eurofurence/reg-backend-template-test/internal/application/server"
 	"github.com/eurofurence/reg-backend-template-test/internal/repository/idp"
 	"github.com/eurofurence/reg-backend-template-test/internal/repository/logging"
 	"github.com/eurofurence/reg-backend-template-test/internal/repository/vault"
-	auconfigapi "github.com/StephanHCB/go-autumn-config-api"
-	auconfigenv "github.com/StephanHCB/go-autumn-config-env"
-	aulogging "github.com/StephanHCB/go-autumn-logging"
 )
 
 func Setup() error {
