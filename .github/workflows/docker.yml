@@ -5,6 +5,10 @@ on:
     branches:
       - 'main'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-and-push-docker-image:
     runs-on: ubuntu-latest
