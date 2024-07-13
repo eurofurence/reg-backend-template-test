@@ -4,13 +4,13 @@ go 1.22.2
 
 require (
 	github.com/Roshick/go-autumn-slog v0.3.0
-	github.com/StephanHCB/go-autumn-config-api v0.2.1
-	github.com/StephanHCB/go-autumn-config-env v0.2.2
-	github.com/StephanHCB/go-autumn-logging v0.3.0
-	github.com/StephanHCB/go-autumn-restclient v0.8.0
-	github.com/StephanHCB/go-autumn-restclient-circuitbreaker v0.4.1
-	github.com/StephanHCB/go-autumn-restclient-circuitbreaker-prometheus v0.1.0
-	github.com/StephanHCB/go-autumn-restclient-prometheus v0.1.2
+	github.com/StephanHCB/go-autumn-config-api v0.2.2
+	github.com/StephanHCB/go-autumn-config-env v0.2.3
+	github.com/StephanHCB/go-autumn-logging v0.4.0
+	github.com/StephanHCB/go-autumn-restclient v0.8.1
+	github.com/StephanHCB/go-autumn-restclient-circuitbreaker v0.5.0
+	github.com/StephanHCB/go-autumn-restclient-circuitbreaker-prometheus v0.2.0
+	github.com/StephanHCB/go-autumn-restclient-prometheus v0.2.0
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-http-utils/headers v0.0.0-20181008091004-fed159eddc2a
 	github.com/golang-jwt/jwt/v5 v5.2.1
