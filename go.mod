@@ -10,7 +10,7 @@ require (
 	github.com/StephanHCB/go-autumn-restclient v0.8.1
 	github.com/StephanHCB/go-autumn-restclient-circuitbreaker v0.5.0
 	github.com/StephanHCB/go-autumn-restclient-circuitbreaker-prometheus v0.2.0
-	github.com/StephanHCB/go-autumn-restclient-prometheus v0.2.0
+	github.com/StephanHCB/go-autumn-restclient-prometheus v0.3.0
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-http-utils/headers v0.0.0-20181008091004-fed159eddc2a
 	github.com/golang-jwt/jwt/v5 v5.2.1
